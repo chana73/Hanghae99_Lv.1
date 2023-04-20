@@ -4,9 +4,10 @@ import com.example.post_hanghae.dto.PostRequestDto;
 import com.example.post_hanghae.dto.PostResponseDto;
 import com.example.post_hanghae.entity.Post;
 import com.example.post_hanghae.repository.PostRepository;
-import jakarta.transaction.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class PostService {
     }
 
     // 전체 게시글 목록 조회
-    @Transactional //(readOnly=true) // 왜 안되ㅣ지?
+    @Transactional (readOnly=true) // 왜 안되ㅣ지? ->springframework에 있는 Transactional
     public List<PostResponseDto> getPosts() {
         List<Post> posts = postRepository.findAllByOrderByModifiedAtDesc();
 
@@ -46,7 +47,7 @@ public class PostService {
         */
 
     // 선택한 게시글 조회
-    @Transactional //(readOnly=true) 왜 안되ㅣ지?
+    @Transactional (readOnly=true) // 왜 안되ㅣ지?
     public PostResponseDto getPost(Long id) {
         Post post = postRepository.findById(id).orElseThrow(() -> new NullPointerException("아이디가 존재하지 않습니다."));
 
