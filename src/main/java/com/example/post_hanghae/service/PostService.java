@@ -29,7 +29,7 @@ public class PostService {
     }
 
     // 전체 게시글 목록 조회
-    @Transactional//(readOnly=true) 왜 안되ㅣ지?
+    @Transactional //(readOnly=true) // 왜 안되ㅣ지?
     public List<PostResponseDto> getPosts() {
         List<Post> posts = postRepository.findAllByOrderByModifiedAtDesc();
 

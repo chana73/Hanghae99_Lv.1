@@ -27,6 +27,7 @@ public class PostController {
     }
 
     //게시글 선택조회
+
     @GetMapping("/get/{id}")
     public PostResponseDto getPost(@PathVariable Long id) {
         return postService.getPost(id);
